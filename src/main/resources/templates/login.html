@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ログイン</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+</head>
+<body>
+<h1>ログイン</h1>
+<h3>Login with OAuth 2.0(OPEN ID)</h3>
+<table>
+    <tr th:each="clientRegistration : ${@clientRegistrationRepository}">
+        <td>
+            <a th:href="@{/oauth2/authorization/{id}(id=${clientRegistration.registrationId})}"
+               th:text="|Sign in with ${clientRegistration.clientName}|">Sign in with App</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

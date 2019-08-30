@@ -1,0 +1,30 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: xxx
+            clientSecret: xxx
+            scope:
+              - openid
+              - profile
+              - email
+          auth0:
+            clientName: AUTH0
+            clientId: xxx
+            clientSecret: xxx
+            redirectUriTemplate: '{baseUrl}/login/oauth2/code/{registrationId}'
+            authorizationGrantType: authorization_code
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            authorizationUri: https://${AUTH0_DOMAIN}/authorize
+            tokenUri: https://${AUTH0_DOMAIN}/oauth/token
+            jwkSetUri: https://${AUTH0_DOMAIN}/.well-known/jwks.json
+            userInfoUri: https://${AUTH0_DOMAIN}/userinfo
+            userNameAttribute: name
+
